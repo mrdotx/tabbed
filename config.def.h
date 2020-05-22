@@ -4,10 +4,10 @@
 static const char font[]        = "monospace:size=9";
 static const char* normbgcolor  = "#1f5393";
 static const char* normfgcolor  = "#cccccc";
-static const char* selbgcolor   = "#4084d6";
+static const char* selbgcolor   = "#4185d7";
 static const char* selfgcolor   = "#ffffff";
 static const char* urgbgcolor   = "#111111";
-static const char* urgfgcolor   = "#cc0000";
+static const char* urgfgcolor   = "#fe0000";
 static const char before[]      = "<";
 static const char after[]       = ">";
 static const char titletrim[]   = "...";
