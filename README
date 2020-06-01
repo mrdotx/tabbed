@@ -26,4 +26,4 @@ tabbed-autohide-20170824-6dc3978.diff
 
 Last implemented commit
 -----------------------
-2018-03-10 05:44	Add OpenBSD support to config.mk	Lucas Gabriel Vuotto
+2020-05-12 15:09	Fixed crash when window height was less or equal to bar height	mikau
