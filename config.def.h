@@ -57,8 +57,7 @@ static Key keys[] = {
     { MODKEY,               XK_9,      move,        { .i = 8 } },
     { MODKEY,               XK_0,      move,        { .i = 9 } },
 
-    { 0,                    XK_q,      killclient,  { 0 } },
-    { 0,                    XK_x,      killclient,  { 0 } },
+    { MODKEY,               XK_q,      killclient,  { 0 } },
 
     { MODKEY,               XK_u,      focusurgent, { 0 } },
     { MODKEY|ShiftMask,     XK_u,      toggle,      { .v = (void*) &urgentswitch } },
