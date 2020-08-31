@@ -1,0 +1,10 @@
+# path:       /home/klassiker/.local/share/repos/tabbed/.gitignore
+# author:     klassiker [mrdotx]
+# github:     https://github.com/mrdotx/tabbed
+# date:       2020-08-31T17:54:16+0200
+
+config.h
+tabbed
+tabbed.o
+xembed
+xembed.o
