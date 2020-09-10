@@ -27,7 +27,7 @@ static Bool npisrelative  = False;
         .v = (char *[]){ "/bin/sh", "-c", \
                 "prop=\"`xwininfo -children -id $1 | grep '^     0x' |" \
                 "sed -e's@^ *\\(0x[0-9a-f]*\\) \"\\([^\"]*\\)\".*@\\1 \\2@' |" \
-                "xargs -0 printf %b | rofi -theme klassiker-vertical -dmenu -p Tab: -l 5 -w $1`\" &&" \
+                "xargs -0 printf %b | dmenu -b -l 5 -r -i -w $1`\" &&" \
                 "xprop -id $1 -f $0 8s -set $0 \"$prop\"", \
                 p, winid, NULL \
         } \
@@ -63,7 +63,6 @@ static Key keys[] = {
     { ALTKEY,               XK_0,      move,        { .i = 9 } },
 
     { ALTKEY,               XK_q,      killclient,  { 0 } },
-    { ALTKEY,               XK_x,      killclient,  { 0 } },
 
     { MODKEY,               XK_u,      focusurgent, { 0 } },
     { MODKEY|ShiftMask,     XK_u,      toggle,      { .v = (void*) &urgentswitch } },
