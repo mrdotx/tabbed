@@ -1,13 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]        = "DejaVu Sans Mono:pixelsize=12:antialias=true:autohint=true";
-static const char* normbgcolor  = "#1f5393";
-static const char* normfgcolor  = "#cccccc";
-static const char* selbgcolor   = "#4185d7";
-static const char* selfgcolor   = "#ffffff";
-static const char* urgbgcolor   = "#111111";
-static const char* urgfgcolor   = "#df2800";
+static char font[]        = "DejaVu Sans Mono:pixelsize=12:antialias=true:autohint=true";
+static char* normbgcolor  = "#1f5393";
+static char* normfgcolor  = "#cccccc";
+static char* selbgcolor   = "#4185d7";
+static char* selfgcolor   = "#ffffff";
+static char* urgbgcolor   = "#2b2b2b";
+static char* urgfgcolor   = "#df2800";
 static const char before[]      = "<";
 static const char after[]       = ">";
 static const char titletrim[]   = "...";
@@ -32,6 +32,19 @@ static Bool npisrelative  = False;
                 p, winid, NULL \
         } \
 }
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+		{ "font",         STRING,  &font },
+		{ "normbgcolor",  STRING,  &normbgcolor },
+		{ "normfgcolor",  STRING,  &normfgcolor },
+		{ "selbgcolor",   STRING,  &selbgcolor },
+		{ "selfgcolor",   STRING,  &selfgcolor },
+		{ "urgbgcolor",   STRING,  &urgbgcolor },
+		{ "urgfgcolor",   STRING,  &urgfgcolor },
+};
 
 #define MODKEY ControlMask
 #define ALTKEY Mod1Mask
