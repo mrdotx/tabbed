@@ -20,6 +20,10 @@ Running tabbed
 --------------
 See the man page for details.
 
+Version
+-------
+0.7
+
 Patches
 -------
 alpha.diff
@@ -28,4 +32,4 @@ tabbed-xresources-20210317-dabf6a2.diff
 
 Last implemented commit
 -----------------------
-2020-05-12 15:09	Fixed crash when window height was less or equal to bar height	mikau
+2022-10-04 17:38	bump version to 0.7	Hiltjo Posthuma
