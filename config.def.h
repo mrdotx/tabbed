@@ -48,7 +48,7 @@ ResourcePref resources[] = {
 
 #define MODKEY ControlMask
 #define ALTKEY Mod1Mask
-static Key keys[] = {
+static const Key keys[] = {
     /* modifier             key        function     argument */
     { MODKEY,               XK_Return, focusonce,   { 0 } },
     { MODKEY,               XK_Return, spawn,       { 0 } },
