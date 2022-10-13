@@ -32,4 +32,4 @@ tabbed-xresources-20210317-dabf6a2.diff
 
 Last implemented commit
 -----------------------
-2022-10-05 08:29	config.h: mark keys as const	NRK
+2022-10-12 21:01	Makefile: simplify and remove hiding the build process	Hiltjo Posthuma
