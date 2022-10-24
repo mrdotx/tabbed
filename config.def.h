@@ -25,9 +25,9 @@ static Bool npisrelative  = False;
 
 #define SETPROP(p) { \
         .v = (char *[]){ "/bin/sh", "-c", \
-                "prop=\"`xwininfo -children -id $1 | grep '^     0x' |" \
+                "prop=\"$(xwininfo -children -id $1 | grep '^     0x' |" \
                 "sed -e's@^ *\\(0x[0-9a-f]*\\) \"\\([^\"]*\\)\".*@\\1 \\2@' |" \
-                "xargs -0 printf %b | dmenu -b -l 5 -r -i -w $1`\" &&" \
+                "xargs -0 printf %b | dmenu -b -l 10 -r -i -p 'Tab' -w $1)\" &&" \
                 "xprop -id $1 -f $0 8s -set $0 \"$prop\"", \
                 p, winid, NULL \
         } \
