@@ -32,4 +32,4 @@ tabbed-xresources-20210317-dabf6a2.diff
 
 Last implemented commit
 -----------------------
-2022-10-14 17:54	remove config.mk	Hiltjo Posthuma
+2023-03-11 00:20	fix: faulty zombie reaping	NRK
