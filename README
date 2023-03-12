@@ -32,4 +32,4 @@ tabbed-xresources-20210317-dabf6a2.diff
 
 Last implemented commit
 -----------------------
-2023-03-11 00:20	fix: faulty zombie reaping	NRK
+2023-03-11 18:07	include X11/keysym.h: improve compatibility with older systems	Hiltjo Posthuma
