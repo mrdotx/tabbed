@@ -32,4 +32,4 @@ tabbed-xresources-20210317-dabf6a2.diff
 
 Last implemented commit
 -----------------------
-2023-04-09 10:47	restore SIGCHLD sighandler to default before spawning a program	Hiltjo Posthuma
+2024-03-19 11:12	bump version to 0.8	Hiltjo Posthuma
