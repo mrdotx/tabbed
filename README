@@ -32,4 +32,4 @@ tabbed-xresources-20210317-dabf6a2.diff
 
 Last implemented commit
 -----------------------
-2024-03-19 11:12	bump version to 0.8	Hiltjo Posthuma
+2025-01-19 11:58	Use UTF8_STRING instead of COMPOUND_TEXT	Mikhail Pchelin
