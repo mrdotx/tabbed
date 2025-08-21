@@ -22,7 +22,7 @@ See the man page for details.
 
 Version
 -------
-0.8
+0.9
 
 Patches
 -------
@@ -32,4 +32,4 @@ tabbed-xresources-20210317-dabf6a2.diff
 
 Last implemented commit
 -----------------------
-2025-01-21 17:28	focus(): clear XUrgencyHint from the container window	Mikhail Pchelin
+2025-08-09 12:35	bump version to 0.9	Hiltjo Posthuma
