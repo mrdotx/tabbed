@@ -633,7 +633,7 @@ getcolor(const char *colstr)
 {
 	XftColor color;
 
-  if (!XftColorAllocName(dpy, visual, cmap, colstr, &color))
+	if (!XftColorAllocName(dpy, visual, cmap, colstr, &color))
 		die("%s: cannot allocate color '%s'\n", argv0, colstr);
 
 	return color;
