@@ -49,36 +49,36 @@ ResourcePref resources[] = {
 #define MODKEY ControlMask
 #define ALTKEY Mod1Mask
 static const Key keys[] = {
-    /* modifier             key        function     argument */
-    { MODKEY,               XK_Return, focusonce,   { 0 } },
-    { MODKEY,               XK_Return, spawn,       { 0 } },
+	/* modifier             key        function     argument */
+	{ MODKEY,               XK_Return, focusonce,   { 0 } },
+	{ MODKEY,               XK_Return, spawn,       { 0 } },
 
-    { MODKEY,               XK_l,      rotate,      { .i = +1 } },
-    { MODKEY,               XK_Right,  rotate,      { .i = +1 } },
-    { MODKEY,               XK_h,      rotate,      { .i = -1 } },
-    { MODKEY,               XK_Left,   rotate,      { .i = -1 } },
-    { MODKEY,               XK_j,      movetab,     { .i = -1 } },
-    { MODKEY,               XK_Up,     movetab,     { .i = -1 } },
-    { MODKEY,               XK_k,      movetab,     { .i = +1 } },
-    { MODKEY,               XK_Down,   movetab,     { .i = +1 } },
-    { MODKEY,               XK_Tab,    rotate,      { .i = 0 } },
+	{ MODKEY,               XK_l,      rotate,      { .i = +1 } },
+	{ MODKEY,               XK_Right,  rotate,      { .i = +1 } },
+	{ MODKEY,               XK_h,      rotate,      { .i = -1 } },
+	{ MODKEY,               XK_Left,   rotate,      { .i = -1 } },
+	{ MODKEY,               XK_j,      movetab,     { .i = -1 } },
+	{ MODKEY,               XK_Up,     movetab,     { .i = -1 } },
+	{ MODKEY,               XK_k,      movetab,     { .i = +1 } },
+	{ MODKEY,               XK_Down,   movetab,     { .i = +1 } },
+	{ MODKEY,               XK_Tab,    rotate,      { .i = 0 } },
 
-    { MODKEY,               XK_grave,  spawn,       SETPROP("_TABBED_SELECT_TAB") },
-    { ALTKEY,               XK_1,      move,        { .i = 0 } },
-    { ALTKEY,               XK_2,      move,        { .i = 1 } },
-    { ALTKEY,               XK_3,      move,        { .i = 2 } },
-    { ALTKEY,               XK_4,      move,        { .i = 3 } },
-    { ALTKEY,               XK_5,      move,        { .i = 4 } },
-    { ALTKEY,               XK_6,      move,        { .i = 5 } },
-    { ALTKEY,               XK_7,      move,        { .i = 6 } },
-    { ALTKEY,               XK_8,      move,        { .i = 7 } },
-    { ALTKEY,               XK_9,      move,        { .i = 8 } },
-    { ALTKEY,               XK_0,      move,        { .i = 9 } },
+	{ MODKEY,               XK_grave,  spawn,       SETPROP("_TABBED_SELECT_TAB") },
+	{ ALTKEY,               XK_1,      move,        { .i = 0 } },
+	{ ALTKEY,               XK_2,      move,        { .i = 1 } },
+	{ ALTKEY,               XK_3,      move,        { .i = 2 } },
+	{ ALTKEY,               XK_4,      move,        { .i = 3 } },
+	{ ALTKEY,               XK_5,      move,        { .i = 4 } },
+	{ ALTKEY,               XK_6,      move,        { .i = 5 } },
+	{ ALTKEY,               XK_7,      move,        { .i = 6 } },
+	{ ALTKEY,               XK_8,      move,        { .i = 7 } },
+	{ ALTKEY,               XK_9,      move,        { .i = 8 } },
+	{ ALTKEY,               XK_0,      move,        { .i = 9 } },
 
-    { ALTKEY,               XK_q,      killclient,  { 0 } },
+	{ ALTKEY,               XK_q,      killclient,  { 0 } },
 
-    { MODKEY,               XK_u,      focusurgent, { 0 } },
-    { MODKEY|ShiftMask,     XK_u,      toggle,      { .v = (void*) &urgentswitch } },
+	{ MODKEY,               XK_u,      focusurgent, { 0 } },
+	{ MODKEY|ShiftMask,     XK_u,      toggle,      { .v = (void*) &urgentswitch } },
 
-    { 0,                    XK_F11,    fullscreen,  { 0 } },
+	{ 0,                    XK_F11,    fullscreen,  { 0 } },
 };
