@@ -1,18 +1,19 @@
-From 8c48f1564c555bbd21758a3a70a9984e61c34a35 Mon Sep 17 00:00:00 2001
-From: 6d6f7274686f6e <4648531+6d6f7274686f6e@users.noreply.github.com>
-Date: Wed, 17 Mar 2021 10:59:18 +0100
+From 46115eedb8ba1da17ea6fb76eb9ffba806faa828 Mon Sep 17 00:00:00 2001
+From: Casey Fitzpatrick <kcghost@gmail.com>
+Date: Sat, 28 Jan 2023 10:13:45 -0500
 Subject: [PATCH] xresources support
 
+Rename foreground to focusnew to avoid conflict with common usage in Xresources
 ---
- config.def.h | 27 ++++++++++++++------
- tabbed.c     | 69 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 89 insertions(+), 7 deletions(-)
+ config.def.h | 51 +++++++++++++++++++++++++-----------
+ tabbed.c     | 73 ++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 107 insertions(+), 17 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
-index defa426..244e288 100644
+index 51bb13d..76059d3 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -1,13 +1,13 @@
+@@ -1,27 +1,27 @@
  /* See LICENSE file for copyright and license details. */
  
  /* appearance */
@@ -23,17 +24,39 @@ index defa426..244e288 100644
 -static const char* selfgcolor   = "#ffffff";
 -static const char* urgbgcolor   = "#111111";
 -static const char* urgfgcolor   = "#cc0000";
-+static char font[]        = "monospace:size=9";
+-static const char before[]      = "<";
+-static const char after[]       = ">";
+-static const char titletrim[]   = "...";
+-static const int  tabwidth      = 200;
+-static const Bool foreground    = True;
+-static       Bool urgentswitch  = False;
++static char* font         = "monospace:size=9";
 +static char* normbgcolor  = "#222222";
 +static char* normfgcolor  = "#cccccc";
 +static char* selbgcolor   = "#555555";
 +static char* selfgcolor   = "#ffffff";
 +static char* urgbgcolor   = "#111111";
 +static char* urgfgcolor   = "#cc0000";
- static const char before[]      = "<";
- static const char after[]       = ">";
- static const char titletrim[]   = "...";
-@@ -33,6 +33,19 @@ static Bool npisrelative  = False;
++static char* before       = "<";
++static char* after        = ">";
++static char* titletrim    = "...";
++static int tabwidth       = 200;
++static int focusnew       = 1;
++static int urgentswitch   = 0;
+ 
+ /*
+  * Where to place a new tab when it is opened. When npisrelative is True,
+  * then the current position is changed + newposition. If npisrelative
+  * is False, then newposition is an absolute position.
+  */
+-static int  newposition   = 0;
+-static Bool npisrelative  = False;
++static int newposition   = 0;
++static int npisrelative  = 0;
+ 
+ #define SETPROP(p) { \
+         .v = (char *[]){ "/bin/sh", "-c", \
+@@ -33,6 +33,27 @@ static Bool npisrelative  = False;
          } \
  }
  
@@ -41,20 +64,28 @@ index defa426..244e288 100644
 + * Xresources preferences to load at startup
 + */
 +ResourcePref resources[] = {
-+		{ "font",         STRING,  &font },
-+		{ "color0",       STRING,  &normbgcolor },
-+		{ "color4",       STRING,  &normfgcolor },
-+		{ "color4",       STRING,  &selbgcolor },
-+		{ "color7",       STRING,  &selfgcolor },
-+		{ "color2",       STRING,  &urgbgcolor },
-+		{ "color3",       STRING,  &urgfgcolor },
++	{ "font",         STRING,  &font},
++	{ "normbgcolor",  STRING,  &normbgcolor},
++	{ "normfgcolor",  STRING,  &normfgcolor},
++	{ "selbgcolor",   STRING,  &selbgcolor},
++	{ "selfgcolor",   STRING,  &selfgcolor},
++	{ "urgbgcolor",   STRING,  &urgbgcolor},
++	{ "urgfgcolor",   STRING,  &urgfgcolor},
++	{ "before",       STRING,  &before},
++	{ "after",        STRING,  &after},
++	{ "titletrim",    STRING,  &titletrim},
++	{ "tabwidth",     INTEGER, &tabwidth},
++	{ "focusnew",     INTEGER, &focusnew},
++	{ "urgentswitch", INTEGER, &urgentswitch},
++	{ "newposition",  INTEGER, &newposition},
++	{ "npisrelative", INTEGER, &npisrelative},
 +};
 +
  #define MODKEY ControlMask
- static Key keys[] = {
+ static const Key keys[] = {
  	/* modifier             key        function     argument */
 diff --git a/tabbed.c b/tabbed.c
-index eafe28a..c5bffc7 100644
+index eafe28a..6ca3454 100644
 --- a/tabbed.c
 +++ b/tabbed.c
 @@ -13,6 +13,7 @@
@@ -124,6 +155,15 @@ index eafe28a..c5bffc7 100644
  void
  configurenotify(const XEvent *e)
  {
+@@ -771,7 +805,7 @@ manage(Window w)
+ 		focus(nextfocus ? nextpos :
+ 		      sel < 0 ? 0 :
+ 		      sel);
+-		nextfocus = foreground;
++		nextfocus = focusnew;
+ 	}
+ }
+ 
 @@ -897,6 +931,40 @@ resize(int c, int w, int h)
  	           (XEvent *)&ce);
  }
@@ -165,6 +205,15 @@ index eafe28a..c5bffc7 100644
  void
  rotate(const Arg *arg)
  {
+@@ -1074,7 +1142,7 @@ setup(void)
+ 	snprintf(winid, sizeof(winid), "%lu", win);
+ 	setenv("XEMBED", winid, 1);
+ 
+-	nextfocus = foreground;
++	nextfocus = focusnew;
+ 	focus(-1);
+ }
+ 
 @@ -1354,6 +1422,7 @@ main(int argc, char *argv[])
  	if (!(dpy = XOpenDisplay(NULL)))
  		die("%s: cannot open display\n", argv0);
@@ -174,5 +223,5 @@ index eafe28a..c5bffc7 100644
  	printf("0x%lx\n", win);
  	fflush(NULL);
 -- 
-2.30.2
+2.25.1
 
