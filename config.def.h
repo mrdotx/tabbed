@@ -1,27 +1,27 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static char font[]        = "DejaVu Sans:pixelsize=14";
-static char* normbgcolor  = "#1f5393";
+static char* font         = "DejaVu Sans:pixelsize=12";
+static char* normbgcolor  = "#2b2b2b";
 static char* normfgcolor  = "#cccccc";
 static char* selbgcolor   = "#4185d7";
-static char* selfgcolor   = "#ffffff";
-static char* urgbgcolor   = "#2b2b2b";
-static char* urgfgcolor   = "#df2800";
-static const char before[]      = "<";
-static const char after[]       = ">";
-static const char titletrim[]   = "...";
-static const int  tabwidth      = 200;
-static const Bool foreground    = True;
-static       Bool urgentswitch  = False;
+static char* selfgcolor   = "#cccccc";
+static char* urgbgcolor   = "#df2800";
+static char* urgfgcolor   = "#cccccc";
+static char* before       = "<";
+static char* after        = ">";
+static char* titletrim    = "...";
+static int tabwidth       = 200;
+static int focusnew       = 1;
+static int urgentswitch   = 0;
 
 /*
  * Where to place a new tab when it is opened. When npisrelative is True,
  * then the current position is changed + newposition. If npisrelative
  * is False, then newposition is an absolute position.
  */
-static int  newposition   = 0;
-static Bool npisrelative  = False;
+static int newposition   = 0;
+static int npisrelative  = 0;
 
 #define SETPROP(p) { \
         .v = (char *[]){ "/bin/sh", "-c", \
@@ -44,6 +44,14 @@ ResourcePref resources[] = {
 		{ "selfgcolor",   STRING,  &selfgcolor },
 		{ "urgbgcolor",   STRING,  &urgbgcolor },
 		{ "urgfgcolor",   STRING,  &urgfgcolor },
+		{ "before",       STRING,  &before },
+		{ "after",        STRING,  &after },
+		{ "titletrim",    STRING,  &titletrim },
+		{ "tabwidth",     INTEGER, &tabwidth },
+		{ "focusnew",     INTEGER, &focusnew },
+		{ "urgentswitch", INTEGER, &urgentswitch },
+		{ "newposition",  INTEGER, &newposition },
+		{ "npisrelative", INTEGER, &npisrelative },
 };
 
 #define MODKEY ControlMask
