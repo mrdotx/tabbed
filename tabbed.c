@@ -829,7 +829,7 @@ manage(Window w)
 		focus(nextfocus ? nextpos :
 		      sel < 0 ? 0 :
 		      sel);
-		nextfocus = foreground;
+		nextfocus = focusnew;
 	}
 }
 
@@ -1083,7 +1083,7 @@ setup(void)
 	screen = DefaultScreen(dpy);
 	root = RootWindow(dpy, screen);
 	initfont(font);
-	vbh = dc.h = dc.font.height + 2;
+	vbh = dc.h = dc.font.height + 4;
 
 	/* init atoms */
 	wmatom[WMDelete] = XInternAtom(dpy, "WM_DELETE_WINDOW", False);
@@ -1215,7 +1215,7 @@ setup(void)
 	snprintf(winid, sizeof(winid), "%lu", win);
 	setenv("XEMBED", winid, 1);
 
-	nextfocus = foreground;
+	nextfocus = focusnew;
 	focus(-1);
 }
 
