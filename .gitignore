@@ -1,7 +1,7 @@
-# path:   /home/klassiker/.local/share/repos/tabbed/.gitignore
+# path:   /home/klassiker/Projects/repos/tabbed/.gitignore
 # author: klassiker [mrdotx]
 # url:    https://github.com/mrdotx/tabbed
-# date:   2025-08-10T04:42:51+0200
+# date:   2026-06-22T04:32:35+0200
 
 /config.h
 /tabbed
